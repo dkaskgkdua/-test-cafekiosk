@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Product extends BaseEntity {
+    // product에서는 order를 바라볼 필요가 없어서 매핑 X
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
