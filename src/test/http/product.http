@@ -1,0 +1,2 @@
+### 판매할 수 있는 상품
+GET http://localhost:9060/api/v1/products/selling
