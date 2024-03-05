@@ -104,8 +104,9 @@ class OrderServiceTest {
 
         productRepository.saveAll(List.of(product1, product2, product3));
 
-        Stock stock1 = Stock.create("001", 1);
-        Stock stock2 = Stock.create("002", 1);
+        Stock stock1 = Stock.create("001", 2);
+        Stock stock2 = Stock.create("002", 2);
+        stock1.deductQuantity(1);
         stockRepository.saveAll(List.of(stock1, stock2));
 
         OrderCreateRequest request = OrderCreateRequest.builder()
@@ -113,9 +114,6 @@ class OrderServiceTest {
                 .build();
 
         // when  // then
-
-        OrderResponse response = orderService.createOrder(request, regisDateTime);
-
         assertThatThrownBy(() -> orderService.createOrder(request, regisDateTime))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("재고가 부족한 상품이 있습니다.");
