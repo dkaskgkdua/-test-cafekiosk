@@ -2,6 +2,7 @@ package sample.cafekiosk.api.service.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import sample.cafekiosk.api.controller.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk.api.service.product.response.ProductResponse;
 import sample.cafekiosk.domain.product.Product;
 import sample.cafekiosk.domain.product.ProductRepository;
@@ -21,5 +22,26 @@ public class ProductService {
         return products.stream()
                 .map(ProductResponse::of)
                 .collect(Collectors.toList());
+    }
+
+    public ProductResponse createProduct(ProductCreateRequest request) {
+        String nextProductNumber = createNextProductNumber();
+
+        Product product = request.toEntity(nextProductNumber);
+        Product savedProduct = productRepository.save(product);
+
+        return ProductResponse.of(savedProduct);
+    }
+
+    private String createNextProductNumber() {
+        String latestProductNumber = productRepository.findLatestProductNumber();
+        if(latestProductNumber == null) {
+            return "001";
+        }
+
+        int lastNumber = Integer.parseInt(latestProductNumber);
+        int nextProductNumber = lastNumber + 1;
+
+        return String.format("%03d", nextProductNumber);
     }
 }
