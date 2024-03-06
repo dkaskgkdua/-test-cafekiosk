@@ -9,6 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import sample.cafekiosk.api.controller.order.request.OrderCreateRequest;
 import sample.cafekiosk.api.controller.order.response.OrderResponse;
+import sample.cafekiosk.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.domain.order.OrderRepository;
 import sample.cafekiosk.domain.orderproduct.OrderProductRepository;
 import sample.cafekiosk.domain.product.Product;
@@ -61,7 +62,7 @@ class OrderServiceTest {
         Stock stock2 = Stock.create("002", 2);
         stockRepository.saveAll(List.of(stock1, stock2));
 
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001","001", "002", "003"))
                 .build();
 
@@ -109,7 +110,7 @@ class OrderServiceTest {
         stock1.deductQuantity(1);
         stockRepository.saveAll(List.of(stock1, stock2));
 
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001","001", "002", "003"))
                 .build();
 
@@ -131,7 +132,7 @@ class OrderServiceTest {
         Product product3 =createProduct(ProductType.HANDMADE, "003", 7000);
 
         productRepository.saveAll(List.of(product1, product2, product3));
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001"))
                 .build();
 
