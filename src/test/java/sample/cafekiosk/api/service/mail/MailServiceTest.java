@@ -3,6 +3,7 @@ package sample.cafekiosk.api.service.mail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -47,6 +48,10 @@ class MailServiceTest {
 
         Mockito.when(mailSendClient.sendEmail(anyString(), anyString(),anyString(),anyString()))
                 .thenReturn(true);
+
+        // when과 동일한 기능
+        BDDMockito.given(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
+                .willReturn(true);
 
 //        Mockito.when(mailSendHistoryRepository.save(any(MailSendHistory.class)))
 //                .thenReturn(true);
