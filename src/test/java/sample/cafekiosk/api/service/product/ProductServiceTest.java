@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.IntegrationTestSupport;
 import sample.cafekiosk.api.controller.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk.api.service.product.request.ProductCreateServiceRequest;
 import sample.cafekiosk.api.service.product.response.ProductResponse;
@@ -21,9 +22,8 @@ import static sample.cafekiosk.domain.product.ProductSellingStatus.HOLD;
 import static sample.cafekiosk.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk.domain.product.ProductType.HANDMADE;
 
-@SpringBootTest
 @Transactional
-public class ProductServiceTest {
+public class ProductServiceTest extends IntegrationTestSupport {
     @Autowired
     private ProductService productService;
 

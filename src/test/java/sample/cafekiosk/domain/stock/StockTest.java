@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.IntegrationTestSupport;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,10 +15,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@SpringBootTest
-@ActiveProfiles("local")
 @Transactional
-public class StockTest {
+public class StockTest extends IntegrationTestSupport {
 
     @DisplayName("재고 차감 시나리오 Dynamic Test")
     @TestFactory

@@ -6,17 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sample.cafekiosk.domain.product.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class MailSendHistory extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MAIL_SEND_HISTORY_SQ")
+    @SequenceGenerator(sequenceName = "MAIL_SEND_HISTORY_SQ", name = "MAIL_SEND_HISTORY_SQ", allocationSize = 1)
     private Long id;
 
     private String fromEmail;

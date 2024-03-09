@@ -13,7 +13,8 @@ import javax.persistence.*;
 public class Product extends BaseEntity {
     // product에서는 order를 바라볼 필요가 없어서 매핑 X
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_SQ")
+    @SequenceGenerator(sequenceName = "PRODUCT_SQ", name = "PRODUCT_SQ", allocationSize = 1)
     private Long id;
 
     private String productNumber;

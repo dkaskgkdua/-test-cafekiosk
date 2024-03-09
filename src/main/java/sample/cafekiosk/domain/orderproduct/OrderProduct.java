@@ -14,7 +14,8 @@ import javax.persistence.*;
 @Entity
 public class OrderProduct extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDER_PRODUCT_SQ")
+    @SequenceGenerator(sequenceName = "ORDER_PRODUCT_SQ", name = "ORDER_PRODUCT_SQ", allocationSize = 1)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

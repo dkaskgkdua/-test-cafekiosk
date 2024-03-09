@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
 @Entity
 public class Order extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDER_SQ")
+    @SequenceGenerator(sequenceName = "ORDER_SQ", name = "ORDER_SQ", allocationSize = 1)
     private Long id;
 
     @Enumerated(EnumType.STRING)

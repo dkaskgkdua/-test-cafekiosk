@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import sample.cafekiosk.IntegrationTestSupport;
 import sample.cafekiosk.domain.order.Order;
 import sample.cafekiosk.domain.order.OrderStatus;
 import sample.cafekiosk.domain.product.Product;
@@ -15,9 +16,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static sample.cafekiosk.domain.product.ProductSellingStatus.SELLING;
 
-@SpringBootTest
-@ActiveProfiles("local")
-public class OrderTest {
+public class OrderTest extends IntegrationTestSupport {
 
     @DisplayName("상품 리스트에서 주문의 총 금액을 계산한다.")
     @Test

@@ -13,7 +13,7 @@ spring:
 #    password: 1234
 #    driver-class-name: com.mysql.cj.jdbc.Driver
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;Mode=Oracle
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -27,7 +27,8 @@ spring:
       # 기본키 생성전략
       use-new-id-generator-mappings: false
 #    database-platform: org.hibernate.dialect.MySQL8Dialect
-    database-platform: org.hibernate.dialect.H2Dialect
+#    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.Oracle10gDialect
     properties:
       hibernate:
         #        show_sql: ture
@@ -62,7 +63,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
 
 server:
   port: 9060
